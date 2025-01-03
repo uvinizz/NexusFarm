@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <img src="{{ url_for('static', filename='logo.png') }}" class="logo" alt="Logo">
+            <h2>Nexus Farm</h2>
+            <h3>Login</h3>
+            <form action="{{ url_for('do_login') }}" method="POST">
+                <div class="textbox">
+                    <img src="{{ url_for('static', filename='user.svg') }}" class="icon" alt="User Icon">
+                    <input type="text" name="login_code" placeholder="Usuário" required>
+                </div>
+                <div class="textbox">
+                    <img src="{{ url_for('static', filename='password.svg') }}" class="icon" alt="Password Icon">
+                    <input type="password" name="password" placeholder="Senha" required>
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+                <div class="links">
+                    <a href="#">Esqueceu sua senha?</a>
+                </div>
+            </form>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                    {% for message in messages %}
+                        <li class="error">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>

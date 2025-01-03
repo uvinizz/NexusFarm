@@ -1,0 +1,107 @@
+/* Estilos Gerais */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('bg_image.jpg'); /* Imagem de fundo da tela de login */
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 70px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 420px; /* Largura da caixa de login */
+}
+
+h2 {
+    color: green;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-bottom: 30px;
+}
+
+.textbox {
+    position: relative;
+    margin: 25px 0; /* Aumentando o espaço vertical entre as caixas de texto */
+}
+
+.textbox input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding-left: 40px; /* Espaço à esquerda para o ícone */
+    margin-top: 5px; /* Espaço entre o ícone e o campo de entrada */
+}
+
+.textbox .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px; /* Aumentando o tamanho do ícone */
+    height: 25px; /* Aumentando o tamanho do ícone */
+}
+
+.logo {
+    width: 100%;
+    max-width: 200px;
+    display: block;  
+    margin: 0 auto 20px;
+}
+
+.btn {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: darkgreen;
+}
+
+.links {
+    margin-top: 10px;
+}
+
+.links a {
+    display: block;
+    margin: 5px 0;
+    text-decoration: none;
+    color: green;
+}
+
+.flashes {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flashes li.error {
+    color: red;
+    margin-bottom: 20px;
+}

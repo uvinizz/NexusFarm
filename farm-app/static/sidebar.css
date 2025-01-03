@@ -1,0 +1,46 @@
+/* sidebar.css */
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #f9f9f9;
+    width: 40px; /* Largura inicial da sidebar */
+    height: 100vh;
+    padding: 10px;
+    position: fixed;
+    transition: width 0.3s;
+    overflow: hidden; /* Evita que o texto vaze */
+    top: 0;
+    left: 0;
+    border-right: 2px solid #ccc; /* Borda cinza à direita */
+}
+
+.sidebar:hover {
+    width: 200px; /* Largura ao passar o mouse */
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.sidebar-links a {
+    margin: 15px 0;
+    text-decoration: none;
+    color: transparent; /* Esconde o texto */
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+.sidebar-links a img {
+    width: 24px; /* Largura dos ícones */
+    height: 24px; /* Altura dos ícones */
+    margin-right: 10px;
+}
+
+/* Para mostrar texto apenas ao passar o mouse */
+.sidebar:hover a {
+    color: black; /* Muda a cor do texto ao passar o mouse */
+}

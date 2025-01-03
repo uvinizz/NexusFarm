@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_fornecedor.css') }}">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        input[readonly] {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="button"] {
+            background-color: #dc3545;
+        }
+
+        button[type="button"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+    <script>
+        function confirmBack() {
+            if (confirm("Tem certeza que deseja voltar? Todas as informações não salvas serão perdidas.")) {
+                window.history.back();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Dados do Cliente</h2>
+        <form method="POST" action="{{ url_for('save_cliente') }}">
+            <!-- Campo de código gerado automaticamente e bloqueado, pode ser simplificado ao integrar um banco de dados (readonly) -->
+            <label for="codigo">ID:</label> 
+            <input type="text" id="codigo" name="codigo" value="{{ codigo }}" readonly>
+
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj" placeholder="Digite o CNPJ" required>
+
+            <label for="razao_social">Razão Social:</label>
+            <input type="text" id="razao_social" name="razao_social" placeholder="Digite a Razão Social" required>
+
+            <label for="nome_fantasia">Nome Fantasia:</label>
+            <input type="text" id="nome_fantasia" name="nome_fantasia" placeholder="Digite o Nome Fantasia" required>
+
+            <label for="status">Status:</label>
+            <select name="status" id="status">
+                <option value="Ativo">Ativo</option>
+                <option value="Inativo">Inativo</option>
+            </select>
+
+
+            <h3>Endereço</h3>
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" name="cep" placeholder="Digite o CEP" required>
+
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado" required>
+                <option value="">Selecione um Estado</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" placeholder="Digite a Cidade" required>
+
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" name="bairro" placeholder="Digite o Bairro" required>
+
+            <label for="rua">Rua:</label>
+            <input type="text" id="rua" name="rua" placeholder="Digite a Rua" required>
+
+            <label for="numero">Número:</label>
+            <input type="text" id="numero" name="numero" placeholder="Digite o Número" required>
+
+            <label for="complemento">Complemento:</label>
+            <input type="text" id="complemento" name="complemento" placeholder="Digite o complemento">
+
+            <h3>Contato</h3>
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" placeholder="Digite o Telefone" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="Digite o E-mail" required>
+
+            <label for="nome_representante">Nome do Representante:</label>
+            <input type="text" id="nome_representante" name="nome_representante" placeholder="Digite o Nome do Representante" required>
+
+            <button type="submit">Salvar</button>
+            <button type="button" onclick="confirmBack();">Voltar</button>
+        </form>
+    </div>
+</body>
+</html>

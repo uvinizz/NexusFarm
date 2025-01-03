@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fornecedores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fornecedores.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
+    <style>
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            padding: 0.8em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 20rem;
+            margin-right: -20rem;
+            box-sizing: border-box;
+        }
+
+        .search-button {
+            padding: 0.8em 1.5em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+        .add-button {
+            padding: 0.8em 1.2em;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+
+        .add-button:hover {
+            background-color: #218838;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 0.5em;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        /* Ajustes para telas pequenas */
+        @media (max-width: 768px) {
+            .search-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-input, .search-button, .add-button {
+                width: 100%;
+                margin: 0 0 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Cabeçalho -->
+    <div class="header">
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo da Empresa" class="header-logo">
+            <h1>Fornecedores</h1>
+            <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-links">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='Home.svg') }}" alt="Home Icon"> Home
+            </a>
+            <a href="{{ url_for('fornecedores') }}">
+                <img src="{{ url_for('static', filename='Fornecedores.svg') }}" alt="Fornecedores Icon"> Fornecedores
+            </a>
+            <a href="{{ url_for('insumos') }}">
+                <img src="{{ url_for('static', filename='Insumos.svg') }}" alt="Insumos Icon"> Insumos
+            </a>
+            <a href="{{ url_for('clientes') }}">
+                <img src="{{ url_for('static', filename='Clientes.svg') }}" alt="Clientes Icon"> Clientes
+            </a>
+            <a href="{{ url_for('funcionarios') }}">
+                <img src="{{ url_for('static', filename='Funcionarios.svg') }}" alt="Funcionarios Icon"> Funcionários
+            </a>
+            <a href="{{ url_for('equipes') }}">
+                <img src="{{ url_for('static', filename='Equipes.svg') }}" alt="Equipes Icon"> Equipes
+            </a>
+            <a href="{{ url_for('compras') }}">
+                <img src="{{ url_for('static', filename='Compras.svg') }}" alt="Compras Icon"> Compras
+            </a>
+            <a href="{{ url_for('vendas') }}">
+                <img src="{{ url_for('static', filename='Vendas.svg') }}" alt="Vendas Icon"> Vendas
+            </a>
+            <a href="{{ url_for('producao') }}">
+                <img src="{{ url_for('static', filename='Produção.svg') }}" alt="Produção Icon"> Produção
+            </a>
+        </div>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="main-content">
+        <div class="funcionarios-container">
+            <h2>Lista de Fornecedores</h2>
+
+            <!-- Seção de Pesquisa -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="ID do Fornecedor...">
+                <input type="text" class="search-input" placeholder="Nome...">
+                <button class="search-button">Pesquisar</button>
+                <a href="{{ url_for('add_fornecedor') }}" class="add-button">Cadastrar Fornecedor</a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fornecedor in fornecedores %}
+                    <tr>
+                        <td>{{ fornecedor.id }}</td>
+                        <td>{{ fornecedor.nome }}</td>
+                        <td>{{ fornecedor.endereco }}</td>
+                        <td>{{ fornecedor.telefone }}</td>
+                        <td>
+                            <span class="status-{{ 'ativo' if fornecedor.status == 'Ativo' else 'inativo' }}">
+                                {{ fornecedor.status }}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="edit-button">Editar</button>
+                            <button class="view-button">Visualizar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fornecedores.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
+    <style>
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-top: 2rem; /* Usando rem para espaçamento */
+            flex-wrap: wrap; /* Permite que os elementos se ajustem em telas menores */
+        }
+    
+        .search-input {
+            padding: 0.8em; /* Usando em para o preenchimento interno */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%; /* Largura total em telas menores */
+            max-width: 20rem; /* Limita a largura máxima em telas maiores */
+            margin-right: -22rem; /* Pequeno espaço entre o input e o botão */
+            box-sizing: border-box; /* Inclui o padding no cálculo da largura */
+        }
+    
+        .search-button {
+            padding: 0.8em 1.5em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            flex-shrink: 0; /* Mantém o tamanho do botão fixo ao lado do input */
+        }
+    
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+    
+        .add-button {
+            padding: 0.8em 1.2em;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 1rem; /* Espaço entre os botões */
+            flex-shrink: 0; /* Impede que o botão mude de tamanho */
+        }
+    
+        .add-button:hover {
+            background-color: #218838;
+        }
+    
+        .status-active {
+            background-color: #28a745; /* Verde para ativo */
+            color: white;
+            padding: 0.3em 0.8em;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 5rem;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+    
+        .status-inactive {
+            background-color: #dc3545; /* Vermelho para inativo */
+            color: white;
+            padding: 0.3em 0.8em;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 5rem;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+    
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 0.5em; /* Ajusta o padding para responsividade */
+        }
+    
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+            font-size: 1rem; /* Fonte relativa */
+        }
+    
+        td {
+            text-align: center;
+            font-size: 0.9rem; /* Fonte relativa */
+        }
+    
+        /* Ajustes para telas pequenas */
+        @media (max-width: 768px) {
+            .search-container {
+                flex-direction: column; /* Coloca os elementos em coluna */
+                align-items: stretch; /* Ocupa toda a largura disponível */
+            }
+    
+            .search-input, .search-button, .add-button {
+                width: 100%; /* Largura total para cada item */
+                margin: 0 0 1rem 0; /* Espaçamento entre os itens */
+            }
+    
+            .status-active, .status-inactive {
+                min-width: auto; /* Remove a largura mínima em telas pequenas */
+                width: 100%; /* Largura total para uma melhor leitura */
+                padding: 0.4em; /* Padding menor */
+                font-size: 1rem; /* Fonte aumentada em telas pequenas */
+            }
+        }
+    </style>    
+</head>
+<body>
+    <!-- Barra de Cabeçalho -->
+    <div class="header">
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo da Empresa" class="header-logo">
+            <h1>Equipes</h1>
+            <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-links">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='Home.svg') }}" alt="Home Icon"> Home
+            </a>
+            <a href="{{ url_for('fornecedores') }}">
+                <img src="{{ url_for('static', filename='Fornecedores.svg') }}" alt="Fornecedores Icon"> Fornecedores
+            </a>
+            <a href="{{ url_for('insumos') }}">
+                <img src="{{ url_for('static', filename='Insumos.svg') }}" alt="Insumos Icon"> Insumos
+            </a>
+            <a href="{{ url_for('clientes') }}">
+                <img src="{{ url_for('static', filename='Clientes.svg') }}" alt="Clientes Icon"> Clientes
+            </a>
+            <a href="{{ url_for('funcionarios') }}">
+                <img src="{{ url_for('static', filename='Funcionarios.svg') }}" alt="Funcionarios Icon"> Funcionários
+            </a>
+            <a href="{{ url_for('equipes') }}">
+                <img src="{{ url_for('static', filename='Equipes.svg') }}" alt="Equipes Icon"> Equipes
+            </a>
+            <a href="{{ url_for('compras') }}">
+                <img src="{{ url_for('static', filename='Compras.svg') }}" alt="Compras Icon"> Compras
+            </a>
+            <a href="{{ url_for('vendas') }}">
+                <img src="{{ url_for('static', filename='Vendas.svg') }}" alt="Vendas Icon"> Vendas
+            </a>
+            <a href="{{ url_for('producao') }}">
+                <img src="{{ url_for('static', filename='Produção.svg') }}" alt="Produção Icon"> Produção
+            </a>
+        </div>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="main-content">
+        <div class="insumos-container">
+            <h2>Lista de Equipes</h2>
+
+            <!-- Seção de Pesquisa -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="ID da Equipe...">
+                <input type="text" class="search-input" placeholder="Líder..."> <!-- Campo para Líder -->
+                <button class="search-button">Pesquisar</button>
+                <a href="{{ url_for('add_equipes') }}" class="add-button">Adicionar Equipe</a> <!-- Link para adicionar equipe -->
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome da Equipe</th>
+                        <th>Líder</th>
+                        <th>Número de Integrantes</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemplo de equipes com status ativo e inativo -->
+                    <tr>
+                        <td>1</td> <!-- ID gerado manualmente -->
+                        <td>Equipe Alpha</td> <!-- Nome da Equipe -->
+                        <td>João Silva</td> <!-- Líder -->
+                        <td>5</td> <!-- Número de Integrantes -->
+                        <td>
+                            <span class="status-active">Ativo</span> <!-- Status Ativo -->
+                        </td>
+                        <td>
+                            <button class="edit-button">Editar</button>
+                            <button class="view-button">Visualizar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Equipe Beta</td> <!-- Nome da Equipe -->
+                        <td>Maria Oliveira</td> <!-- Líder -->
+                        <td>3</td> <!-- Número de Integrantes -->
+                        <td>
+                            <span class="status-inactive">Inativo</span> <!-- Status Inativo -->
+                        </td>
+                        <td>
+                            <button class="edit-button">Editar</button>
+                            <button class="view-button">Visualizar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

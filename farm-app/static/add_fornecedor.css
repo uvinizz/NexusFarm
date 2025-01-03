@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 20px; /* Mantém o preenchimento do contêiner */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Define uma largura máxima */
+    margin: 20px auto; /* Centraliza o contêiner */
+}
+
+h2 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, select {
+    width: calc(100% - 20px); /* Reduzindo a largura total para acomodar o preenchimento */
+    padding: 10px;
+    margin-bottom: 10px; /* Espaço entre os campos */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #28a745; /* Verde padrão */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838; /* Verde mais escuro ao passar o mouse */
+}
+
+button[type="button"] {
+    background-color: #dc3545; /* Vermelho para o botão de voltar */
+}
+
+button[type="button"]:hover {
+    background-color: #c82333; /* Vermelho mais escuro ao passar o mouse */
+}

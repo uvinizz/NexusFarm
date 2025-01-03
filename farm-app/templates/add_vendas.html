@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Venda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fornecedores.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_fornecedor.css') }}">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 10px; /* Espaçamento entre os botões */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="button"] {
+            background-color: #dc3545;
+        }
+
+        button[type="button"]:hover {
+            background-color: #c82333;
+        }
+
+        .produtos-container {
+            margin-top: 20px;
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 20px; /* Espaço adicional abaixo da tabela */
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Estilo da linha de separação */
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Venda</h2>
+        <form action="{{ url_for('save_venda') }}" method="POST">
+            <label for="id">ID da Venda:</label>
+            <input type="text" id="id" name="id" value="{{ id }}" readonly>
+
+            <label for="cliente">Cliente:</label>
+            <input type="text" id="cliente" name="cliente" placeholder="Digite o nome do cliente" required>
+
+            <label for="data_envio">Data Prevista para Envio:</label>
+            <input type="date" id="data_envio" name="data_envio" required>
+            
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                 <option value="" disabled selected>Selecione o Status</option>
+                <option value="cancelado">Cancelado</option>
+                <option value="completo">Completo</option>
+                <option value="pendente">Pendente</option>
+            </select>
+
+
+            <hr> <!-- Linha de separação -->
+
+            <label for="produtos">Produto:</label>
+            <input type="text" id="produtos" name="produtos" placeholder="Adicione produtos aqui" required>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" min="1" placeholder="Qtd" required>
+            <button type="button" onclick="addProduto()">Adicionar Produto</button>
+
+            <div class="produtos-container">
+                <h4>Produtos Adicionados:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-produtos">
+                        <!-- Linhas de produtos serão adicionadas aqui -->
+                    </tbody>
+                </table>
+                <input type="hidden" name="produtos" id="produtos-list">
+            </div>
+
+            <button type="submit">Salvar Venda</button>
+            <button type="button" onclick="confirmBack();">Voltar</button>
+        </form>
+    </div>
+
+    <script>
+        function confirmBack() {
+            if (confirm("Tem certeza que deseja voltar? Todas as informações não salvas serão perdidas.")) {
+                window.history.back();
+            }
+        }
+
+        function addProduto() {
+            var produtosInput = document.getElementById("produtos");
+            var quantidadeInput = document.getElementById("quantidade");
+            var listaProdutos = document.getElementById("lista-produtos");
+            var produtosList = document.getElementById("produtos-list");
+            
+            if (produtosInput.value.trim() === "" || quantidadeInput.value.trim() === "") {
+                alert("Por favor, preencha o produto e a quantidade.");
+                return;
+            }
+
+            // Adiciona o produto e quantidade à tabela
+            var tr = document.createElement("tr");
+            var tdProduto = document.createElement("td");
+            tdProduto.textContent = produtosInput.value;
+            var tdQuantidade = document.createElement("td");
+            tdQuantidade.textContent = quantidadeInput.value;
+
+            tr.appendChild(tdProduto);
+            tr.appendChild(tdQuantidade);
+            listaProdutos.appendChild(tr);
+
+            // Atualiza o campo oculto com os produtos
+            var currentProdutos = produtosList.value ? produtosList.value.split(",") : [];
+            currentProdutos.push(produtosInput.value + " (Qtd: " + quantidadeInput.value + ")");
+            produtosList.value = currentProdutos.join(",");
+
+            // Limpa os campos de entrada
+            produtosInput.value = "";
+            quantidadeInput.value = "";
+        }
+    </script>
+</body>
+</html>

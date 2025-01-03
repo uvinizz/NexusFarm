@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Produção</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fornecedores.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="button"] {
+            background-color: #dc3545;
+        }
+
+        button[type="button"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+    <script>
+        function confirmBack() {
+            if (confirm("Tem certeza que deseja voltar? Todas as informações não salvas serão perdidas.")) {
+                window.history.back();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Produção</h2>
+        <form action="{{ url_for('save_producao') }}" method="POST">
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto" required>
+            
+            <label for="classe">Classe:</label>
+            <input type="text" id="classe" name="classe" placeholder="Digite a classe do produto" required>
+
+            <label for="tempo_maturacao">Tempo Médio para Maturação:</label>
+            <input type="number" id="tempo_maturacao" name="tempo_maturacao" placeholder="Digite o tempo em semanas ou meses" required>
+            
+            <label for="medida_tempo">Medida de Tempo:</label>
+            <select id="medida_tempo" name="medida_tempo" required>
+                <option value="">Escolha a Medida</option>
+                <option value="semanas">Semanas</option>
+                <option value="meses">Meses</option>
+                <option value="anos">Anos</option>
+            </select>
+            
+            <label for="umidade">Umidade:</label>
+            <input type="number" id="umidade" name="umidade" placeholder="Digite a umidade em %" required>
+            
+            <label for="temperatura">Temperatura:</label>
+            <input type="number" id="temperatura" name="temperatura" placeholder="Digite a temperatura em °C" required>
+
+            <label for="nivel_luz">Nível de Luz:</label>
+            <input type="text" id="nivel_luz" name="nivel_luz" placeholder="Digite o nível de luz" required>
+
+            <label for="ultima_colheita">Última Colheita:</label>
+            <input type="date" id="ultima_colheita" name="ultima_colheita" required>
+
+            <label for="proxima_colheita">Próxima Colheita:</label>
+            <input type="date" id="proxima_colheita" name="proxima_colheita" required>
+
+            <label for="estoque">Estoque:</label>
+            <input type="number" id="estoque" name="estoque" placeholder="Digite a quantidade em estoque" required>
+
+            <label for="status">Status:</label>
+            <select name="status" id="status">
+                <option value="Ativo">Ativo</option>
+                <option value="Inativo">Inativo</option>
+            </select>
+
+            <button type="submit">Salvar</button>
+            <button type="button" onclick="confirmBack();">Voltar</button>
+        </form>
+    </div>
+</body>
+</html>

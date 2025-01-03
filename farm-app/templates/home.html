@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body class="home">
+    <!-- Barra Superior -->
+    <div class="top-bar">
+        <h1>Página Inicial</h1>
+        <div class="user-icon" onclick="toggleDropdown(event)">
+            <img src="{{ url_for('static', filename='usericon.svg') }}" alt="User Icon" class="icon">
+            <span class="username">USER</span>
+            <div class="dropdown-content">
+                <a href="{{ url_for('logout') }}" class="logout-button">Deslogar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container da Home -->
+    <div class="home-container">
+        <div class="grid-container">
+            <div class="card">
+                <a href="{{ url_for('producao') }}" class="no-link">
+                    <img src="{{ url_for('static', filename='Produção.svg') }}" alt="Produção Icon" class="icon">
+                    <p>Produção</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{{ url_for('insumos') }}" class="no-link">
+                    <img src="{{ url_for('static', filename='Insumos.svg') }}" alt="Insumos Icon" class="icon">
+                    <p>Insumos</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{{ url_for('fornecedores') }}" class="no-link">
+                    <img src="{{ url_for('static', filename='Fornecedores.svg') }}" alt="Fornecedores Icon" class="icon">
+                    <p>Fornecedores</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{{ url_for('clientes') }}" class="no-link">
+                    <img src="{{ url_for('static', filename='Clientes.svg') }}" alt="Clientes Icon" class="icon">
+                    <p>Clientes</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{{ url_for('funcionarios') }}" class="no-link">
+                    <img src="{{ url_for('static', filename='Funcionarios.svg') }}" alt="Funcionários Icon" class="icon">
+                    <p>Funcionários</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{{ url_for('equipes') }}" class="no-link">
+                    <img src="{{ url_for('static', filename='Equipes.svg') }}" alt="Equipes Icon" class="icon">
+                    <p>Equipes</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{{ url_for('compras') }}" class="no-link">
+                    <img src="{{ url_for('static', filename='Compras.svg') }}" alt="Compras Icon" class="icon">
+                    <p>Compras</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{{ url_for('vendas') }}" class="no-link">
+                    <img src="{{ url_for('static', filename='Vendas.svg') }}" alt="Vendas Icon" class="icon">
+                    <p>Vendas</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown(event) {
+            const dropdown = document.querySelector('.dropdown-content');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            event.stopPropagation(); // Impede que o clique se propague
+        }
+
+        // Fecha o menu se o usuário clicar fora dele
+        document.addEventListener('click', () => {
+            const dropdown = document.querySelector('.dropdown-content');
+            dropdown.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

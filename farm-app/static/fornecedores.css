@@ -1,0 +1,473 @@
+/* fornecedores.css */
+
+.sidebar {
+    background-color: #f9f9f9;
+    width: 60px;
+    height: 100vh;
+    padding: 10px;
+    position: fixed;
+    transition: width 0.3s;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.sidebar-links a {
+    margin: 15px 0;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+.sidebar-links img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.main-content {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.top-bar {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: calc(100% - 60px);
+    top: 0;
+    left: 60px;
+    z-index: 1000;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.status-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.add-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: #218838;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.ativo {
+    background-color: #28a745;
+}
+
+.inativo {
+    background-color: #dc3545;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.header {
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.header h1 {
+    margin: 0;
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.header-logo {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.logout-button {
+    text-decoration: none;
+    color: #d9534f;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 50px;
+}
+
+.sidebar {
+    background-color: #f9f9f9;
+    width: 60px;
+    height: 100vh;
+    padding: 10px;
+    position: fixed;
+    transition: width 0.3s;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #ccc;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.sidebar-links a {
+    margin: 15px 0;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+.sidebar-links img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #218838;
+}
+
+.add-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: #218838;
+}
+
+/* fornecedores.css */
+
+.sidebar {
+    background-color: #f9f9f9;
+    width: 60px;
+    height: 100vh;
+    padding: 10px;
+    position: fixed;
+    transition: width 0.3s;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.sidebar-links a {
+    margin: 15px 0;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+.sidebar-links img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.main-content {
+    margin-left: 60px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.ativo {
+    background-color: #28a745;
+    color: white;
+}
+
+.inativo {
+    background-color: #dc3545;
+    color: white;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.header {
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.header h1 {
+    margin: 0;
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.header-logo {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    flex-grow: 1;
+}
+/* Estilos para os status */
+.status-pending {
+    background-color: #ffcc00; /* Amarelo saturado */
+    color: black;
+}
+
+.status-sent {
+    background-color: #007bff; /* Azul saturado */
+    color: white;
+}
+
+.status-rejected {
+    background-color: #dc3545; /* Vermelho saturado */
+    color: white;
+}
+
+.status-delivered {
+    background-color: #28a745; /* Verde saturado */
+    color: white;
+}
+
+.status-approved {
+    background-color: #17a2b8; /* Ciano saturado */
+    color: white;
+}
+
+.status-pending, .status-sent, .status-rejected, .status-delivered, .status-approved {
+    padding: 5px 8px; /* Diminuindo o padding */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 0.85em; /* Diminuindo o tamanho da fonte */
+    display: inline-block; /* Para que o fundo seja aplicado */
+}
+/* Adicione estas classes ao seu CSS (fornecedores.css) */
+.status-active {
+    color: green;
+    font-weight: bold;
+}
+
+.status-inactive {
+    color: red;
+    font-weight: bold;
+}
